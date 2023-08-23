@@ -1,4 +1,6 @@
+package ru.netology.web.page;
 import com.codeborne.selenide.SelenideElement;
+import ru.netology.web.data.DataHelper;
 
 import java.time.Duration;
 
@@ -17,7 +19,7 @@ public class TransferPage {
 		transferHead.shouldBe(visible);
 	}
 
-	public DashboardPage makeValidTransfer(String amounToTransfer, DataHelper.CardInfo cardInfo) {
+	public DashboardPage makeValidTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {
 		makeTransfer(amountToTransfer, cardInfo);
 		return new DashboardPage();
 	}

@@ -1,4 +1,8 @@
+package ru.netology.web.page;
+
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ElementsCollection;
+import ru.netology.web.data.DataHelper;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
@@ -9,7 +13,7 @@ public class DashboardPage {
 	private final String balanceStart = "баланс: ";
 	private final String balanceFinish = " р.";
 	private final SelenideElement heading = $("[data-test-id=dashboard]");
-	private final ElementCollection cards = $$(".list__item div");
+	private final ElementsCollection cards = $$(".list__item div");
 
 	public DashboardPage() {
 		heading.shouldBe(visible);
