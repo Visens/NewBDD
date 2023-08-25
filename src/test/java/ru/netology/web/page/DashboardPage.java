@@ -4,8 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ElementsCollection;
 import ru.netology.web.data.DataHelper;
 
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -20,7 +19,8 @@ public class DashboardPage {
 	}
 
 	public int getCardBalance(DataHelper.CardInfo cardInfo) {
-		var text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
+		String text;
+		text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
 		return extractBalance(text);
 	}
 

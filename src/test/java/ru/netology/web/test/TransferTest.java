@@ -1,6 +1,7 @@
 package ru.netology.web.test;
 
 import com.codeborne.selenide.Selenide;
+import static com.codeborne.selenide.Selenide.open;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,7 @@ public class TransferTest {
 		var SecondCardBalance = dashboardPage.getCardBalance(secondCardInfo);
 		var amount = generateValidAmount(firstCardBalance);
 		var expectedBalanceFirstCard = firstCardBalance - amount;
-		var expectedBalanceSecondCard = secondCardBalance + amount;
+		var expectedBalanceSecondCard = SecondCardBalance + amount;
 		var transferPage = dashboardPage.selectCardToTransfer(secondCardInfo);
 		dashboardPage = transferPage.makeValidTransfer(String.valueOf(amount), firstCardInfo);
 		var actualBalanceFirstCard = dashboardPage.getCardBalance(firstCardInfo);
@@ -44,10 +45,10 @@ public class TransferTest {
 	@Test
 	void shouldGetErrorMessageIfAmountMoreBalance() {
 		var firstCardInfo = getFirstCardInfo();
-		var secondCardInfo = getSecongCardInfo();
+		var secondCardInfo = getSecondCardInfo();
 		var firstCardBalance = dashboardPage.getCardBalance(firstCardInfo);
 		var SecondCardBalance = dashboardPage.getCardBalance(secondCardInfo);
-		var amount = generateInvalidAmount(secondCardBalance);
+		var amount = generateInvalidAmount(SecondCardBalance);
 		var transferPage = dashboardPage.selectCardToTransfer(firstCardInfo);
 		transferPage.makeTransfer(String.valueOf(amount), secondCardInfo);
 		transferPage.findErrorMessage("Выполнена попытка перевода суммы, превышающей остаток на карте списания");
