@@ -1,4 +1,4 @@
-image: Ubuntu
+image: Ubuntu2004
 
 stack: jdk 11
 
@@ -9,7 +9,7 @@ branches:
 build: off
 
 install:
-  - java -jar artifacts/app-ibank-build-for-testers.jar &
+  - java -jar ./artifacts/app-ibank-build-for-testers.jar - &
   - chmod +x gradlew
 
 build_script:
